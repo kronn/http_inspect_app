@@ -4,27 +4,24 @@ class HttpInspectApp < Sinatra::Base
   disable :run
 
   before do
-    header_keys = [
-      :accept_encoding, :content_charset, :content_length, :cookies,
-      :host, :ip, :media_type, :media_type_params, :params,
-      :query_string, :referer, :request_method, :scheme,
-      :url, :user_agent
-    ]
-    header_array = header_keys.map do |key|
-      "#{key}: #{request.send(key).inspect}"
-    end
-    @header_list = header_array.join("\n")
+    @list = env.keys.sort.map do |key|
+      "#{key} = #{env[key]}"
+    end.join("\n")
   end
 
   get '/text' do
-    @header_list
+    @list
   end
 
   get '/html' do
-    "<pre>#{@header_list}</pre>"
+    "<pre>#{@list}</pre>"
   end
 
   get '/cookie' do
-    "TO BE DONE"
+    @key = "Zeitpunkt"
+    @value = Time.now.to_s
+    response.set_cookie( @key, @value )
+
+    "<pre>#{@key} => #{@value}</pre>"
   end
 end
