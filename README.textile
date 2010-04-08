@@ -1,0 +1,12 @@
+h2. HTTP-Inspect
+
+Es gibt die folgenden Aktionen:
+
+*text*
+Eine Reintext-Darstellung der Anfrage-Header
+
+*html*
+Eine HTML-Darstellung der Anfrage-Header
+
+*cookie*
+Setzt ein Cookie und zeigt den Inhalt an
