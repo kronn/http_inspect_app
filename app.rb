@@ -1,5 +1,3 @@
-require 'erb'
-
 class HttpInspectApp < Sinatra::Base
   set :environment, ( ENV['RACK_ENV'] || 'development' ).to_sym
   set :root,        File.dirname(__FILE__)
@@ -18,15 +16,15 @@ class HttpInspectApp < Sinatra::Base
     @header_list = header_array.join("\n")
   end
 
-  get '/' do
-    erb :index
-  end
-
   get '/text' do
     @header_list
   end
 
   get '/html' do
     "<pre>#{@header_list}</pre>"
+  end
+
+  get '/cookie' do
+    "TO BE DONE"
   end
 end
