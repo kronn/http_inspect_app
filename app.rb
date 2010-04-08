@@ -6,6 +6,9 @@ class HttpInspectApp < Sinatra::Base
   disable :run
 
   before do
+    @cookie_key = "Zeitpunkt"
+    @cookie_value = Time.now.to_s
+
     @list = env.keys.sort.map do |key|
       "#{key} = #{env[key]}"
     end.join("\n")
@@ -17,6 +20,10 @@ class HttpInspectApp < Sinatra::Base
     end
   end
 
+  get '/' do
+    redirect '/index.html'
+  end
+
   get '/text' do
     @list
   end
@@ -26,10 +33,8 @@ class HttpInspectApp < Sinatra::Base
   end
 
   get '/cookie' do
-    @key = "Zeitpunkt"
-    @value = Time.now.to_s
-    response.set_cookie( @key, @value )
+    response.set_cookie( @cookie_key, @cookie_value )
 
-    "<pre>#{@key} => #{@value}</pre>"
+    "#{@cookie_key} => #{@cookie_value}"
   end
 end
