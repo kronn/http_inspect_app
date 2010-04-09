@@ -28,6 +28,10 @@ class HttpInspectApp < Sinatra::Base
     @list
   end
 
+  get '/text/' do
+    redirect '/text'
+  end
+
   get '/html' do
     "<pre>#{h @list}</pre>"
   end
