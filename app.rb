@@ -10,6 +10,7 @@ class HttpInspectApp < Sinatra::Base
     @cookie_value = Time.now.to_s
 
     @list = env.keys.sort.map do |key|
+      next unless key =~ /^[A-Z]/
       "#{key} = #{env[key]}"
     end.join("\n")
   end
