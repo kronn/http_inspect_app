@@ -12,7 +12,8 @@ class HttpInspectApp < Sinatra::Base
     @list = env.keys.sort.map do |key|
       next unless key =~ /^[A-Z]/
       "#{key} = #{env[key]}"
-    end.join("\n")
+    end.compact.join("\n")
+    @list << "\n\n"
   end
 
   helpers do
@@ -44,6 +45,13 @@ class HttpInspectApp < Sinatra::Base
   end
 
   post '/text' do
-    @list
+    list_and_post = ""
+    list_and_post << @list
+    list_and_post << request.POST.map do |key, value|
+      "  #{key} => #{value}"
+    end.compact.flatten.join("\n")
+    list_and_post << "\n\n"
+
+    list_and_post
   end
 end
