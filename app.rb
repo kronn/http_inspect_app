@@ -42,4 +42,8 @@ class HttpInspectApp < Sinatra::Base
 
     "#{@cookie_key} => #{@cookie_value}"
   end
+
+  post '/text' do
+    @list
+  end
 end

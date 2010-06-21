@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>HTTP-Inspect</title>
+    <meta name="http-equiv" content="Content-Type: text/html; charset=utf-8">
     <style type="text/css" media="screen">
       * {
         font-family:monospace;
@@ -13,6 +15,7 @@
   <body>
     <h1>HTTP-Inspect</h1>
     <p>Es gibt die folgenden Aktionen:</p>
+    <h2>GET</h2>
     <dl>
       <dt><a href="/text">text</a></dt>
       <dd>Eine Reintext-Darstellung der Anfrage-Header</dd>
@@ -22,6 +25,13 @@
 
       <dt><a href="/cookie">cookie</a></dt>
       <dd>Setzt ein Cookie und zeigt den Inhalt an</dd>
+    </dl>
+    <h2>POST</h2>
+    <dl>
+      <dt><a href="/text">text</a></dt>
+      <dd>Eine Reintext-Darstellung der POST-Header. Der Link ist nur zum
+      kopieren gedacht. Wenn man einfach daraufklickt, wird ein HTTP GET
+      ausgelöst.</dd>
     </dl>
   </body>
 </html>
